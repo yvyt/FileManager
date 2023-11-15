@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d5237ee958.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/styleUserReport.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/report" method="post">
+              <a href="/"><i class="fa-solid fa-arrow-left"></i></a>
+              {{#if file}}
+                  <div>
+                    {{#if file.isImage}}
+                      <img src=".\.{{file.image}}" alt="" style="width: 160px;height:160px" />
+                    {{else}}
+                      <img src="{{file.image}}" alt="" style="width: 160px;height:160px" />
+                    {{/if}}
+                  </div>
+                  <h4 class="file-name">{{file.name}}</h4>
+                  <input name="fileId" type="hidden" value="{{file._id}}" id="fileId"/>
+              {{/if}}
+            <h4><b>Choose type of policy violated</b></h4>
+            <div class="row">
+                <div class="col-lg-6">
+                    <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="0">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Spam Content</div>
+                      </label>
+                    
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="1">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Malware</div>
+                      </label>
+                    
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="2">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Phishing</div>
+                      </label>
+                    
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="3">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Violence</div>
+                      </label>
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="4">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Hate Speech</div>
+                      </label>
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="5">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Violent Organizations and Movements Content</div>
+                      </label>
+                </div>
+                <div class="col-lg-6">
+                    <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="6">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Harassment, Bullying, and Threats</div>
+                      </label>
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="7">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Sexually Explicit Material</div>
+                      </label>
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="8">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Impersonation and Misrepresentation</div>
+                      </label>
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="9">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Personal and Confidential Information</div>
+                      </label>
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="10">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Illegal Activities</div>
+                      </label>
+                      <label class="rad-label">
+                        <input type="radio" class="rad-input" name="rad" value="11">
+                        <div class="rad-design"></div>
+                        <div class="rad-text">Copyright Infringement</div>
+                      </label>
+                </div>
+            </div>
+          <button type="button" class="btn btn-danger" style="width: 50%;margin: 50px auto;" onclick="sendReport()">Report</button>
+        </form>
+     
+    </div>
+      <script src="/js/script.js"></script>
+
+</body>
+</html>

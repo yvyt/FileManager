@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/styleErr.css">
+</head>
+<body>
+    <section class="errorPage">
+        <div class="errorPage__text">
+            <h3 style="    margin-bottom: 0px;">404</h3>
+            <h2>
+                {{#if err}}
+                     <p style="color: yellow;">{{err}}</p>
+                {{/if}}
+            </h2>
+            <br>
+            <a href="/" style="    text-decoration: none;"><span class="errorPage__button">Back to home</span></a>
+        </div>
+
+        <span class="errorPage__templeweed-container"><img src="https://i.ibb.co/mTg87G2/tembleweed.png" class="errorPage__tembleweed"></span>
+        <div class="errorPage__terrain"></div>
+    </section>
+</body>
+</html>

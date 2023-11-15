@@ -1,0 +1,89 @@
+[{
+        "_id": "640afb43e71ef2304eca5660",
+        "name": "KY",
+        "email": "ky@gmail.com",
+        "role": "user",
+        "password": "12345678",
+        "passwordConfirm": "12345678"
+    },
+    {
+        "_id": "640bacb7c27fba2d5114c7ef",
+        "name": "KYadmin",
+        "email": "KYadmin@gmail.com",
+        "role": "admin",
+        "password": "12345678",
+        "passwordConfirm": "12345678"
+    },
+    {
+        "_id": "640c2cd8da3b900623d0f68a",
+        "name": "KYtest",
+        "email": "kytest@gmail.com",
+        "role": "user",
+        "password": "1234568",
+        "passwordConfirm": "1234568"
+    },
+    {
+        "name": "KYtest1",
+        "email": "kytest1@gmail.com",
+        "role": "user",
+        "password": "1234568",
+        "passwordConfirm": "1234568"
+    },
+    {
+        "name": "KYtest2",
+        "email": "kytest2@gmail.com",
+        "role": "user",
+        "password": "1234568",
+        "passwordConfirm": "1234568"
+    },
+    {
+        "name": "KYtest3",
+        "email": "kytest3@gmail.com",
+        "role": "user",
+        "password": "1234568",
+        "passwordConfirm": "1234568"
+    },
+    {
+        "name": "KYtest4",
+        "email": "kytest4@gmail.com",
+        "role": "user",
+        "password": "1234568",
+        "passwordConfirm": "1234568"
+    },
+    {
+        "name": "KYtest5",
+        "email": "kytest5@gmail.com",
+        "role": "user",
+        "password": "1234568",
+        "passwordConfirm": "1234568"
+    },
+    {
+        "name": "KYtest6",
+        "email": "kytest6@gmail.com",
+        "role": "user",
+        "password": "1234568",
+        "passwordConfirm": "1234568"
+    },
+    {
+        "name": "KYtest7",
+        "email": "kytest7@gmail.com",
+        "role": "admin",
+        "password": "1234568",
+        "passwordConfirm": "1234568"
+    },
+    {
+        "name": "admin",
+        "email": "admin@gmail.com",
+        "role": "admin",
+        "password": "123456",
+        "passwordConfirm": "123456"
+    }, {
+        "_id": "64421007261b255b991a6d51",
+        "name": "vy vy",
+        "email": "vytuong2903@gmail.com",
+        "role": "user",
+        "password": "123456",
+        "usingSize": "582808",
+        "passwordConfirm": "123456"
+    }
+]

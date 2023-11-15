@@ -1,0 +1,202 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://kit.fontawesome.com/d5237ee958.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="stylesheets/styleAdmin.css" />
+    <title>Admin</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <nav>
+        <ul>
+          <li>
+            <a href="#" class="logo">
+              <img src="/images/logo_new.png" /><span
+                class="nav-item"
+              >DriveForYou</span>
+            </a>
+          </li>
+          <li>
+            <a href="/users"><i class="fa-solid fa-user"></i>
+              <span class="nav-item">User</span>
+            </a>
+          </li>
+          <li>
+            <a href="/reports"><i class="fa-solid fa-flag"></i>
+              <span class="nav-item">Report</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/userPermission"><i class="fa-solid fa-server"></i>
+              <span class="nav-item">User Permission</span>
+            </a>
+          </li>
+          <hr class="line" />
+          <li class="li-logout">
+            <a href="/api/users/logout" class="logout"><i
+                class="fa-solid fa-right-from-bracket"
+              ></i>
+              <span class="nav-item">Log out</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- <div class="search">
+      <input class = "input" type="search" name = "search" placeholder="Tìm kiếm">
+      <input class = "button--submit" type="submit" name = "submit" value="Tìm">
+    </div> -->
+      <section class="card-manager">
+        <!-- <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul> -->
+        <!-- NAVBAR ADMIN START -->
+        <div class="input__container">
+          <input
+            placeholder="Tìm kiếm"
+            class="input-navbar"
+            name="text"
+            type="text"
+          />
+          <button class="shadow__btn"><i
+              class="fa-brands fa-searchengin"
+            ></i></button>
+        </div>
+        <!-- NAVBAR ADMIN END -->
+
+        <div class="list-card">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card">
+                  <div class="infos">
+                    <div class="info">
+                      <ul class="ul-card">
+                        <li class="li-title">
+                          <p class="name">
+                            Admin
+                          </p>
+                          <p class="member-number">
+                            {{countAdmin}}
+                            admins
+                          </p>
+                        </li>
+                        <li class="li-images">
+                          <div class="image"><img src="/images/ad.png" /></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- card User-->
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card">
+                  <div class="infos">
+                    <div class="info">
+                      <ul class="ul-card">
+                        <li class="li-title">
+                          <p class="name">
+                            User
+                          </p>
+                          <p class="member-number">
+                            {{countUser}}
+                            users
+                          </p>
+                        </li>
+                        <li class="li-images">
+                          <div class="image"><img
+                              src="/images/userAdmin.png"
+                            /></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- card report-->
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card">
+                  <div class="infos">
+                    <div class="info">
+                      <ul class="ul-card">
+                        <li class="li-title">
+                          <p class="name">
+                            Report
+                          </p>
+                          <p class="member-number">
+                            {{countReport}}
+                            report
+                          </p>
+                        </li>
+                        <li class="li-images">
+                          <div class="image"><img
+                              src="/images/folder5.webp"
+                            /></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- card report-->
+              <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card">
+                  <div class="infos">
+                    <div class="info">
+                      <ul class="ul-card">
+                        <li class="li-title">
+                          <p class="name">
+                            Report
+                          </p>
+                          <p class="member-number">
+                            5 report
+                          </p>
+                        </li>
+                        <li class="li-images">
+                          <div class="image"><img
+                              src="/images/share6.png"
+                            /></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="/js/bundle.js"></script>
+  </body>
+</html>

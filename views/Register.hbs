@@ -1,0 +1,125 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <link rel="stylesheet" href="/stylesheets/styleRegister.css" />
+    <title>Document</title>
+  </head>
+
+  <body style="background-image: url(/images/bg3.jpg); no-repeat;background-size:110%;">
+    <div class="container">
+      <input id="register_toggle" type="checkbox" />
+      <div class="slider">
+        <form
+          class="form form--login"
+          id="formlogin"
+          method="post"
+          action="/api/users/login"
+        >
+          <span class="title">Sign In</span>
+          <div class="form_control">
+
+            <input
+              type="text"
+              name="email"
+              class="input email-login"
+              id="email"
+              placeholder="Email"
+              {{! required }}
+            />
+            <label class="label">Username</label>
+          </div>
+          <div class="form_control">
+            <input
+              type="password"
+              name="password"
+              class="input password-login"
+              id="password"
+              placeholder="Password"
+              {{! required }}
+            />
+            <label class="label">Password</label>
+          </div>
+          <a href="forgotPassword">Forgot my password!</a>
+          <input
+            type="submit"
+            class="input-submit input-submit__login"
+            name="submit"
+            value="Sign in"
+          />
+          {{! <input type="submit" class="input-submit"></input> }}
+          {{! <div class="container-error container-error__login"></div> }}
+          {{! Render error message on client side }}
+          {{#if msg}}
+            <div class="alert alert-danger">{{msg}}</div>
+          {{/if}}
+          <span class="bottom_text">Don't have an account?
+            <label class="swtich" for="register_toggle">Sign Up</label>
+          </span>
+        </form>
+
+        <form class="form form--signup" id="formRegister">
+          <span class="title">Sign Up</span>
+          <div class="form_control">
+            <input type="text" name="name" class="input" id="name" required placeholder="Username"/>
+          </div>
+          <div class="form_control">
+            <input
+              type="email"
+              name="email"
+              class="input email-signup"
+              required
+              placeholder="Email"
+            />
+          </div>
+          <div class="form_control">
+            <input
+              type="password"
+              name="password"
+              class="input password-signup"
+              required
+              placeholder="Password"
+            />
+          </div>
+          <div class="form_control">
+            <input
+              type="password"
+              name="password-confirm"
+              class="input"
+              id="password-confirm"
+              required
+              placeholder="Confirm Password"
+            />
+          </div>
+
+          <div class="container-error container-error__signup"></div>
+
+          <input
+            type="submit"
+            class="input-submit input-submit__signup"
+            name="submit"
+            value="Sign up"
+          />
+
+          <span class="bottom_text">Already have an account?
+            <label class="swtich" for="register_toggle">Sign In</label>
+          </span>
+        </form>
+
+      </div>
+
+    </div>
+    <script src="/js/bundle.js"></script>
+  </body>
+
+</html>

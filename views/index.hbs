@@ -1,0 +1,364 @@
+<!-- header -->
+<div class="header">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <div class="navbar-brand">
+        <a class="navbar-brand ps-3 me-0 me-lg-2" href="#">
+          <img src="/images/logo.png" alt="logo" width="50" />
+          <a href="/" class="logo">DriveForYou</a>
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse">
+        <form class="d-flex justify-content-center w-50" role="search">
+          <input
+            class="form-control me-2 w-100"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            id="charSearch"
+          />
+          <button class="btn w-auto" type="submit">Search</button>
+        </form>
+
+        <div class="d-flex justify-content-end ps-5 w-auto">
+          {{#if us}}
+              <a href="#" class="me-1">{{us.name}}</a>
+              <label class="text-white"> | </label>
+              {{!-- Add event listen call API at index.js --}}
+              <a href="/logout" class="nav__logout ms-1">Log out</a>
+          {{/if}}
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- content -->
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- menu -->
+      <div class="menu col-lg-2 col-md-0 col-sm-0" style="height:800px;">
+        <div class="item add mt-4 mb-4 pt-4">
+          <ion-icon name="add-circle-outline"></ion-icon>
+          <div class="btn-group">
+            <div
+              class="btn btn-success dropdown-toggle dropdown-toggle-split"
+              data-toggle="dropdown">
+              + New
+            </div>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#" id="create_folder" onclick="showCreate()">New folder</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/upload">Upload</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="item share mb-4">
+          <ion-icon name="share-social-outline"></ion-icon>
+          <a href="/shared">Share</a>
+        </div>
+
+        <div class="item recent mb-4">
+          <ion-icon name="time-outline"></ion-icon>
+          <a href="/recent" class="" href="">Recent</a>
+        </div>
+
+        <div class="item started mb-4">
+          <ion-icon name="star-outline"></ion-icon>
+          <a href="/star">Star</a>
+        </div>
+
+        <div class="item trash mb-4">
+          <ion-icon name="trash-outline"></ion-icon>
+          <a href="/trash">Trash</a>
+        </div>
+
+        <div class="item storage mb-4">
+          <ion-icon name="cloud-outline"></ion-icon>
+          <a href="/buyStorage">Storage</a>
+        </div>
+        {{#if (roleOfUser us.role "admin")}}
+            <div class="item storage mb-4">
+              <ion-icon name="people-outline"></ion-icon>
+              <a href="/admin">Admin Permission</a>
+            </div>
+        {{/if}}
+
+      </div>
+
+      
+      <!-- display -->
+      <div class="display col-lg-10 col-md-12" >
+        <div class="row ms-3 mt-4" id="display">
+          <!-- folder -->
+          {{#if folders}}
+            {{#each folders}}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div>
+                        <img src="/images/folder.webp" alt="" style="width: 160px;height:160px" />
+                      </div>
+                      <span class="file-name" onclick="goToSubfolder('{{_id}}')">{{truncateString name}}</span>
+                      <br>
+                      <div class="btn-group mt-2" aria-disabled="true">
+                        {{#if isDele}}
+                          <div>
+                            <p>
+                              <ion-icon name="reload-outline" onclick="restore(`{{_id}}`,`folder`)"></ion-icon>
+                              <ion-icon name="trash-outline" onclick="showDeleteDialog(`{{_id}}`,`{{name}}`,`folder`)"></ion-icon>
+                            </p>
+                          </div>
+                        {{else}}
+                          <p>
+                            <ion-icon name="pencil-outline" onclick="showRenameDialog(`{{_id}}`,`{{name}}`,`folder`)"></ion-icon>
+                            {{#if isImportant}}
+                            <ion-icon name="star" onclick="toImportant(`{{_id}}`)"></ion-icon>
+                            {{else}}
+                            <ion-icon name="star-outline" onclick="toImportant(`{{_id}}`)"></ion-icon>
+                            {{/if}}
+                            <a href="/downloadFolder/{{_id}}"><ion-icon name="cloud-download-outline"></ion-icon></a>
+                            <ion-icon name="trash-outline" onclick="showDelete(`{{_id}}`,`{{name}}`,`folder`)"></ion-icon>
+                          </p>
+                        {{/if}}
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+            {{/each}}
+          {{/if}}
+          <!-- file -->
+            {{#if files}}
+              {{#each files}}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div style="width: 160px;height:160px">
+                        {{#if isImage}}
+                            <img src=".\.{{image}}" alt="" style="width: 160px;height:160px" />
+                        {{else}}
+                            <img src="{{image}}" alt="" style="width: 160px;height:160px" />
+                        {{/if}}
+
+                      </div>
+                        <span class="file-name">{{truncateString name}}</span>
+                      <br>
+                      <div class="btn-group mt-2">
+                        {{#if isDele}}
+                        <div>
+                          <p>
+                            <ion-icon name="reload-outline" onclick="restore(`{{_id}}`,`file`)"></ion-icon>
+                            <ion-icon name="trash-outline" onclick="showDeleteDialog(`{{_id}}`,`{{name}}`,`file`)"></ion-icon>
+                          </p>
+
+                        </div>
+                              
+                        {{else}}
+                            <p>
+                              <ion-icon name="share-social-outline" onclick="showShare(`{{_id}}`)"></ion-icon>
+                              <ion-icon name="pencil-outline" onclick="showRenameDialog(`{{_id}}`,`{{name}}`,`file`)"></ion-icon>
+                              {{#if isImportant}}
+                              <ion-icon name="star" onclick="toImportant(`{{_id}}`)"></ion-icon>
+                              {{else}}
+                              <ion-icon name="star-outline" onclick="toImportant(`{{_id}}`)"></ion-icon>
+                              {{/if}}
+                              <a href="/preview/{{_id}}"><ion-icon name="eye-outline"></ion-icon></a>
+                              <a href="/downloadFile/{{_id}}"><ion-icon name="cloud-download-outline"></ion-icon></a>
+                              <ion-icon name="trash-outline" onclick="showDelete(`{{_id}}`,`{{name}}`,`file`)"></ion-icon>
+                            </p>
+
+                        {{/if}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+            {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- dialog rename --}}
+<div>
+    <div id="rename-dialog" class="dialog-modal">
+      <div class="form" >
+        <ion-icon name="close-circle-outline" class="close mt-3 me-4" onclick="closeRenameDialog()"></ion-icon>
+        <div>
+          <h2>Rename folder</h2>
+        </div> <br>
+        <div>
+          <p class="current-folder">Current folder: <strong id="current-filename"></strong></p>
+        </div>
+    
+        <div>
+          <input type="text" placeholder="Enter new folder name" id="new_name" class="form-control" name="new_name" required/>
+        </div>       
+
+        <input id="type" type="hidden" name="type" class="form-control">
+        <input id="currentId" type="hidden" name="currentId" class="form-control">
+
+        <div id="renameDialog">
+
+        </div>
+
+        <div><button type="button" class="btn btn-primary" onclick="rename()">Save</button></div>        
+      </div>
+    </div>
+</div>
+{{!-- dialog create --}}
+<div >
+  <div  id="create-dialog"  class="dialog-modal">
+    <div class="form">
+      <ion-icon name="close-circle-outline" class="close mt-3 me-4" onclick="closeCreateDialog()"></ion-icon>
+      <div>
+        <h2 class="mb-4">Create new folder</h2>
+      </div>
+      <input type="hidden" id="nameCurrent" class="form-control" name="currentFolder" {{#if nameCurr}} value="{{nameCurr}}"
+        {{else}}value="0" {{/if}}>
+      <div> 
+        <input type="text" class="form-control" name="folder_name" id="folder_name" placeholder="Enter folder name"> <br>
+      </div>
+
+      <div id="createDialog">
+
+      </div>
+      
+      <div><button type="button" onclick="createFolder()" class="btn btn-warning mt-2">Create</button></div>
+    </div>
+  </div>
+</div>
+
+{{!-- dialog delete --}}
+<div >
+  <div  id="delete-dialog"  class="dialog-modal">
+    <div class="form">
+      <ion-icon name="close-circle-outline" class="close mt-3 me-4" onclick="closeDeleteDialog()"></ion-icon>
+      <div>
+        <h2 class="mb-4">Delete</h2>
+      </div>
+      
+      <div> 
+        <p class="toast-delete" id="dele"></p>
+      </div>
+      <input id="type-dele" type="hidden" name="type" class="form-control">
+      <input id="currentId-dele" type="hidden" name="currentId" class="form-control">
+      <div id="deleteDialog">
+
+      </div>
+      
+      <div class="button-group">
+        <button type="button" class="btn btn-warning mt-2 me-4" onclick="toDelete()">Delete</button>
+
+        <button type="button" class="btn btn-warning mt-2" onclick="closeDeleteDialog()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- Dialog permanenly delete --}}
+<div>
+  <div id="delete-perman-dialog" class="dialog-modal">
+    <div class="form">
+      <ion-icon name="close-circle-outline" class="close mt-3 me-4" onclick="closeDeletePermanDialog()"></ion-icon>
+      <div>
+        <h2 class="mb-4">Permanenly Delete</h2>
+      </div>
+      <div>
+        <p class="toast-delete" id="permanenly"></p>
+      </div>
+      <input id="type-perman" type="hidden" name="type" class="form-control">
+      <input id="currentId-perman" type="hidden" name="currentId" class="form-control">
+      <div id="permanDeleteDialog">
+      </div>
+      <div class="button-group">
+        <button type="button" class="btn btn-warning mt-2 me-4" onclick="toDeletePerman()">Delete</button>
+        <button type="button" class="btn btn-warning mt-2" onclick="closeDeletePermanDialog()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- dialog share --}}
+<div >
+  <div  id="share-dialog"  class="dialog-modal">
+    <div class="form">
+      <ion-icon name="close-circle-outline" class="close mt-3 me-4" onclick="closeShareDialog()"></ion-icon>
+      <div>
+        <h2 class="mb-4">Share</h2>
+      </div>
+        <input id="idFile" type="hidden" name="idFile" class="form-control">
+        <div id="hidden"></div>
+        <div>
+          <input type="email" class="form-control" name="user" id="addUser"
+            placeholder="Add user that you want to share this item">
+
+        </div>
+      <div style="display: block;">
+        <span class="access-title" style="margin-left: 35%;
+    margin-right: 0;"> (Press Enter to add people)</span>
+        <br>
+        <br>
+        <span class="access-title" style="margin-left: 30px;" >People with access:</span>
+        <div id="display_user" style="display: block;">
+
+        </div>
+      </div>
+
+      <hr style="color: white;">
+
+      <div style="  margin-bottom: 20px;justify-content: start;
+    margin-left: 30px;">
+        <span class="access-title" style="    margin-right: 20px;
+        margin-top: 10px;">General access</span>
+     
+
+        <div class="access-change" style="display: block;">
+          <select onchange="changeGeneralAccess()" id="access">
+            <option value="restricted">Restricted</option>
+            <option value="have-link">Anyone have the link</option>
+          </select>
+
+          <div class="restricted" id="restricted">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+
+            <span style="color: yellow;">Only people with access can open with the link</span>
+          </div>
+        </div>
+      </div>
+      <hr style="color: white;">
+
+      <div>
+        <input type="text" class="form-control"  id="linkShare"
+          placeholder="Link to share" style="margin-left: 50px;">
+        <br>
+        <br>
+        <button type="button" class="btn btn-warning mt-2 me-5" style="width: 30%; margin-left: 20px;margin-right: 20px;
+                height: 50px;" onclick="copyLink()">Copy Link</button>
+      
+      </div>
+      <div class="button-group">
+        <button type="button" class="btn btn-warning mt-2 me-5" onclick="shareFile()">Share</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/bundle.js"></script>
+<script src="/js/script.js"></script>
+
+<script>
+  {{!-- var dialog = document.getElementById('dialog'); --}}
+  var open = document.getElementById('create_folder');
+  var close = document.getElementsByClassName("close")[0];
+  
+ {{!--  open.onclick = function() {
+        dialog.style.display = "block";
+      } --}}
+
+ 
+</script>

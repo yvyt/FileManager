@@ -1,0 +1,109 @@
+body {
+    overflow: hidden;
+    background-color: black;
+}
+
+img.errorPage__tembleweed {
+    animation: templeWeed 5s infinite 1s;
+}
+
+.errorPage__templeweed-container {
+    position: absolute;
+    bottom: 20px;
+    width: 10vw;
+    transform: translateX(-100%);
+    animation: moveWeed 3s infinite linear;
+}
+
+.errorPage__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -5%;
+    /* display: flex;
+    flex-wrap: wrap; */
+    /* justify-content: center; */
+    text-align: center;
+}
+
+.errorPage__button {
+    display: block;
+    cursor: pointer;
+    border: 1px solid yellow;
+    color: yellow;
+    padding: 10px 30px;
+    letter-spacing: 0.2em;
+    box-shadow: 7px 7px 20px yellow;
+    background: black;
+    transition: all .2s;
+}
+
+.errorPage__button:hover {
+    font-size: 20px;
+}
+
+.errorPage__button:active {
+    transform: translateY(2px);
+    box-shadow: 3px 3px 20px yellow;
+}
+
+.errorPage__text h3 {
+    font-size: 20vw;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: 0.2em;
+    margin-bottom: 50px;
+    color: yellow;
+    text-shadow: 7px 7px 20px #00000026;
+}
+
+.hamburger__menu {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+    display: block;
+    margin-top: -6px;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+    .header__menu .hamburger__menu {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .header__menu ul {
+        display: none;
+    }
+}
+
+@keyframes moveWeed {
+    0% {
+        left: 0;
+        transform: translateX(-100%) rotate(0);
+    }
+    100% {
+        left: 130%;
+        transform: translateX(100%) rotate(540deg);
+    }
+}
+
+@keyframes templeWeed {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-3vw);
+    }
+    60% {
+        transform: translateY(-4vw);
+    }
+    90% {
+        transform: translateY(0);
+    }
+    90% {
+        transform: translateY(0);
+    }
+}

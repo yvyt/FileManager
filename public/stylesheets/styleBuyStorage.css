@@ -1,0 +1,117 @@
+body {
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    background-color: #333;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  /* header */
+  .header {
+    align-items: center;
+    background-color: rgb(33, 33, 33);
+  }
+  
+  .header .collapse {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header .logo {
+    color: yellow;
+  }
+  
+  .header .collapse button {
+    background-color: yellow;
+    color: black;
+  }
+  
+  .header .collapse button:hover{
+    background-color: black;
+    color: yellow;
+  }
+  
+  .header .collapse a {
+    color: yellow;
+  }
+  
+  
+  .header .collapse a:hover{
+    font-size: medium;
+  }
+
+/* body */
+.buy-storage h3 {
+    display: flex;
+    justify-content: center;
+    color: yellow;
+    margin-top: 30px;
+}
+
+.buy-storage .content {
+    margin: 30px 0 30px;
+}
+
+.buy-storage .content label {
+    color: yellow;
+    margin-top: 15px;
+}
+
+.buy-storage .credit-info .valid{
+    display: -webkit-inline-box;
+}
+
+.buy-storage button {
+    width: 100%;
+    background-color: yellow;
+    border: 1px solid black;
+    padding: 5px;
+    margin-top: 30px;
+    position: relative;
+    transition: 0.5s;
+    font-size: 17px;
+    border-radius: 0.4em;
+}
+  
+.buy-storage button p {
+    position: absolute;
+    display: contents;
+    transition: .5s;
+    color: black;
+}
+  
+.buy-storage button ion-icon {
+    position: absolute;
+    top: 0.65em;
+    right: 28em;
+    opacity: 0;
+    transition: .5s;
+    height: 1em;
+    fill: black;
+}
+  
+.buy-storage button:hover p {
+    color: yellow
+}
+  
+.buy-storage button:hover ion-icon {
+    opacity: 1;
+    color: yellow;
+}
+  
+.buy-storage button:hover {
+    background-color: black;
+    box-shadow: 0px 0px 30px 1px #c1cf4a;
+}
+
+/* footer */
+.footer {
+    background: rgb(33, 33, 33);
+}
+  
+.footer p {
+    color: yellow;
+}
+
